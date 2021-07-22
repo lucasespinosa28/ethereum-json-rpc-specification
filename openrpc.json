@@ -67,7 +67,6 @@
       "name": "net_listening",
       "summary": "returns listening status",
       "description": "Determines if this client is listening for new network connections.",
-      "id":67,
       "params": [],
       "result": {
         "name": "netListeningResult",
@@ -116,6 +115,18 @@
           "title": "networkId",
           "type": "string",
           "pattern": "^[\\d]+$"
+        }
+      }
+    },
+    {
+      "name": "eth_accounts",
+      "summary": "Returns a list of addresses owned by client.",
+      "params": [],
+      "result": {
+        "name": "address",
+        "description": "Addresses owned by the client",
+        "schema": {
+          "$ref": "#/components/schemas/Address"
         }
       }
     },
