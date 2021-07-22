@@ -67,6 +67,7 @@
       "name": "net_listening",
       "summary": "returns listening status",
       "description": "Determines if this client is listening for new network connections.",
+      "id":67,
       "params": [],
       "result": {
         "name": "netListeningResult",
