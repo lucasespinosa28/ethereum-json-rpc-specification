@@ -408,7 +408,8 @@
       },
       "examples": [
         {
-          "name": "Balance Example",
+          "name": "Block By Hash Result Example",
+          "description":"The result is too big to have an example.",
           "params": [
             {
               "name": "blockhash",
