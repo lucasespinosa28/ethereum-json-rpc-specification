@@ -29,8 +29,8 @@
         "name": "Current client",
         "params": [],
         "result": {
-          "name": "besu version",
-          "value": "besu/<version>"
+          "name": "node version",
+          "value": "<node>/<version>"
         }
         }
       ]
@@ -126,18 +126,6 @@
       ]
     },
     {
-        "name": "eth_accounts",
-        "summary": "Returns a list of addresses owned by client.",
-        "params": [],
-        "result": {
-          "name": "address",
-          "description": "Addresses owned by the client",
-          "schema": {
-            "$ref": "#/components/schemas/Address"
-          }
-        }
-      },
-    {
       "name": "net_version",
       "summary": "Network identifier associated with network",
       "description": "Returns the network ID associated with the current network.",
@@ -164,16 +152,36 @@
       ]
     },
     {
+      "name": "eth_accounts",
+      "summary": "Returns a list of addresses owned by client.",
+      "params": [],
+      "result": {
+        "description":"arrays of hex codes as strings representing the addresses owned by the client",
+        "$ref": "#/components/schemas/Address"
+      }
+    },
+    {
       "name": "eth_blockNumber",
       "summary": "Returns the number of most recent block.",
       "params": [],
       "result": {
         "$ref": "#/components/contentDescriptors/BlockNumber"
-      }
+      },
+      "examples": [
+        {
+          "name": "BlockNumberExamples",
+          "result": {
+            "name": "BLOCK NUMBER",
+            "description":" a hex code of an integer representing the current block number the client is on.",
+            "value": "0xc4b437"
+          }
+        }
+      ]
     },
     {
       "name": "eth_call",
       "summary": "Executes a new message call (locally) immediately without creating a transaction on the block chain.",
+      "description":"",
       "params": [
         {
           "$ref": "#/components/contentDescriptors/Transaction"
@@ -188,7 +196,36 @@
         "schema": {
           "$ref": "#/components/schemas/Bytes"
         }
-      }
+      },
+      "examples": [
+        {
+          "name": "eth Call Example",
+          "params": [
+            {
+              "name": "Transaction call object",
+              "value": [
+                {
+                "from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
+                "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+                "gas": "0x76c0",
+                "gasPrice": "0x9184e72a000",
+                "value": "0x9184e72a",
+                "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
+                }
+              ]
+            },
+            {
+              "name": "block parameter",
+              "value":"latest"
+            }  
+          ],
+          "result": {
+            "name": "eth Call result",
+            "description":"the returned value of the executed contract method.",
+            "value": "0x"
+          }
+        }
+      ]
     },
     {
       "name": "eth_chainId",
@@ -203,7 +240,17 @@
           "type": "string",
           "pattern": "^0x[a-fA-F\\d]+$"
         }
-      }
+      },
+      "examples": [
+        {
+        "name": "Example chainId",
+        "result": {
+          "name": "quantity",
+          "description":"example of mainnet chainId",
+          "value": "0x1"
+        }
+        }
+      ]
     },
     {
       "name": "eth_coinbase",
@@ -215,7 +262,16 @@
         "schema": {
           "$ref": "#/components/schemas/Address"
         }
-      }
+      },
+      "examples": [
+        {
+        "name": "Example coinbase address",
+        "result": {
+          "name": "address",
+          "value": "0x02f53c47bdba74a51c6d657ef5b75dffe2099d11"
+        }
+        }
+      ]
     },
     {
       "name": "eth_estimateGas",
@@ -231,7 +287,32 @@
         "schema": {
           "$ref": "#/components/schemas/Integer"
         }
-      }
+      },
+      "examples": [
+        {
+          "name": "EstimateGas Example",
+          "params": [
+            {
+              "name": "Transaction object",
+              "value": [
+                {
+                "from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
+                "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+                "gas": "0x76c0",
+                "gasPrice": "0x9184e72a000",
+                "value": "0x9184e72a",
+                "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
+                }
+              ]
+            }     
+          ],
+          "result": {
+            "name": "Gas Used",
+            "description":"the amount of gas used.",
+            "value": "0x5cec"
+          }
+        }
+      ]
     },
     {
       "name": "eth_gasPrice",
@@ -239,7 +320,17 @@
       "params": [],
       "result": {
         "$ref": "#/components/contentDescriptors/GasPrice"
-      }
+      },
+      "examples": [
+        {
+          "name": "Gas price Example",
+          "result": {
+            "name": "Gas price",
+            "value": "0x12a05f200"
+          }
+        }
+      ]
+      
     },
     {
       "name": "eth_getBalance",
@@ -266,7 +357,27 @@
         "schema": {
           "$ref": "#/components/schemas/IntegerOrNull"
         }
-      }
+      },
+      "examples": [
+        {
+          "name": "Balance Example",
+          "params": [
+            {
+              "name": "address",
+              "value":"0x3ad63fe9ce75874cd4f88422c44bfd17cb5f4754"            
+            }, 
+            {
+              "name": "blockparameter",
+              "value":"latest"            
+            }   
+          ],
+          "result": {
+            "name": "Balance of account",
+            "description":"Integer of the current balance in wei",
+            "value": "0x9d822b6ef00"
+          }
+        }
+      ]
     },
     {
       "name": "eth_getBlockByHash",
@@ -294,7 +405,22 @@
         "schema": {
           "$ref": "#/components/schemas/BlockOrNull"
         }
-      }
+      },
+      "examples": [
+        {
+          "name": "Balance Example",
+          "params": [
+            {
+              "name": "blockhash",
+              "value":"0x3ad63fe9ce75874cd4f88422c44bfd17cb5f4754"            
+            }, 
+            {
+              "name": "Showtranscationbetails falg",
+              "value":false            
+            }   
+          ]
+        }
+      ]
     },
     {
       "name": "eth_getBlockByNumber",
@@ -912,7 +1038,17 @@
         "schema": {
           "$ref": "#/components/schemas/Integer"
         }
-      }
+      },
+      "examples": [
+        {
+          "name": "protocol version",
+          "result": {
+            "name": "protocol version",
+            "description": "The current ethereum protocol version in hex",
+            "value": "0x41"
+          }
+        }
+      ]
     },
     {
       "name": "eth_sendRawTransaction",
@@ -1699,6 +1835,7 @@
           "$ref": "#/components/schemas/Transaction"
         }
       },
+
       "TransactionResult": {
         "name": "transactionResult",
         "description": "Returns a transaction or null",
