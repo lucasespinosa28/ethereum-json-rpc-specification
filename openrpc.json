@@ -445,7 +445,23 @@
         "schema": {
           "$ref": "#/components/schemas/BlockOrNull"
         }
-      }
+      },
+      "examples": [
+        {
+          "name": "Block By Number Result Example",
+          "description":"The result is too big to have an example.",
+          "params": [
+            {
+              "name": "blockparameter",
+              "value":"0x1b4"            
+            }, 
+            {
+              "name": "Showtranscationbetailsfalg",
+              "value":true            
+            }   
+          ]
+        }
+      ]
     },
     {
       "name": "eth_getBlockTransactionCountByHash",
