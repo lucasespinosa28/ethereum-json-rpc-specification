@@ -10,38 +10,6 @@
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "servers": [
-    {
-      "name":"BSC RPC Endpoints:",
-      "url": "https://bsc-dataseed.binance.org/",
-      "summary":"Recommend Mainnet(ChainID 0x38, 56 in decimal)"
-    },
-    {
-      "name":"BSC RPC Endpoints:",
-      "url": "https://bsc-dataseed1.defibit.io/",
-      "summary":"Recommend Mainnet(ChainID 0x38, 56 in decimal)"
-    },
-    {
-      "name":"BSC RPC Endpoints:",
-      "url": "https://bsc-dataseed1.ninicoin.io/",
-      "summary":"Recommend Mainnet(ChainID 0x38, 56 in decimal)"
-    },
-    {
-      "name":"BSC RPC Endpoints:",
-      "url": "https://data-seed-prebsc-1-s1.binance.org:8545/",
-      "summary":"Testnet(ChainID 0x61, 97 in decimal)"
-    },
-    {
-      "name":"BSC RPC Endpoints:",
-      "url": "https://data-seed-prebsc-2-s1.binance.org:8545/",
-      "summary":"Testnet(ChainID 0x61, 97 in decimal)"
-    },
-    {
-      "name":"BSC RPC Endpoints:",
-      "url": "https://data-seed-prebsc-1-s2.binance.org:8545/",
-      "summary":"Testnet(ChainID 0x61, 97 in decimal)"
-    }
-  ],
   "methods": [
     {
       "name": "web3_clientVersion",
@@ -55,7 +23,17 @@
           "title": "clientVersion",
           "type": "string"
         }
-      }
+      },
+      "examples": [
+        {
+        "name": "Current client",
+        "params": [],
+        "result": {
+          "name": "besu version",
+          "value": "besu/<version>"
+        }
+        }
+      ]
     },
     {
       "name": "web3_sha3",
@@ -134,7 +112,18 @@
           "description": "Hex representation of number of connected peers",
           "type": "string"
         }
-      }
+      },
+      "examples": [
+        {
+          "name": "Peer",
+          "description": "example network network with 1 peer in hex",
+          "params": [],
+          "result": {
+            "name": "Peers",
+            "value": "0x1"
+          }
+        }
+      ]
     },
     {
         "name": "eth_accounts",
@@ -161,7 +150,18 @@
           "type": "string",
           "pattern": "^[\\d]+$"
         }
-      }
+      },
+      "examples": [
+        {
+          "name": "NetworkId",
+          "description": "example network ID of ethereum mainnet",
+          "params": [],
+          "result": {
+            "name": "Id",
+            "value": "1"
+          }
+        }
+      ]
     },
     {
       "name": "eth_blockNumber",
