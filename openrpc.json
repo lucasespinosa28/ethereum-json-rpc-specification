@@ -1,7 +1,7 @@
 {
-  "openrpc": "1.0.0",
+  "openrpc": "1.2.4",
   "info": {
-    "version": "1.0.10",
+    "version": "1.0.20",
     "title": "Ethereum JSON-RPC",
     "description": "This API lets you interact with an EVM-based client via JSON-RPC",
     "license": {
