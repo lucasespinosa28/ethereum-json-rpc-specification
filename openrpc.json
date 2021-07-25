@@ -686,7 +686,7 @@
                 }
               ]
             }     
-       ],
+       ]
     },
     {
       "name": "eth_getRawTransactionByHash",
