@@ -376,7 +376,7 @@
 					"name": "Address",
 					"required": true,
 					"schema": {
-						"$ref": "#/components/schemas/address"
+						"$ref": "#/components/schemas/Address"
 					}
 				},
 				{
