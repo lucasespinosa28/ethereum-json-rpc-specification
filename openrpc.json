@@ -16,7 +16,7 @@
     },
     {
       "name": "Alchemy",
-      "url": "https://eth-mainnet.alchemyapi.io/v2/nKJkTFpK67EszVebFt0GZdb6kKt_Ys7p",
+      "url": "https://eth-mainnet.alchemyapi.io/v2/<ApiKey>",
       "summary": "for methods,eth,avax,net,personal,txpool and web3"
     },
     {
