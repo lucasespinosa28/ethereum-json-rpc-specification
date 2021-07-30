@@ -126,7 +126,18 @@
           "description": "Hex representation of number of connected peers",
           "type": "string"
         }
-      }
+      },
+      "examples": [
+        {
+          "name": "peerCountExample",
+          "description": "example network network with 1 peer in hex",
+          "params": [],
+          "result": {
+            "name": "peerCountResultExample",
+            "value": "0x64"
+          }
+        }
+      ]
     },
     {
       "name": "net_version",
@@ -421,8 +432,8 @@
               "value": "0xc94770007dda54cF92009BFF0dE90c06F603a09f"
             },
             {
-              "name": "BlockNumber",
-              "value": "latest"
+              "name": "isTransactionsIncluded",
+              "value": true
             }
           ],
           "result": {
@@ -1700,6 +1711,70 @@
         }
       ]
     },
+    {
+			"name": "eth_sign",
+			"summary": "Returns an EIP-191 signature over the provided data.",
+			"params": [
+				{
+					"name": "Address",
+					"required": true,
+					"schema": {
+						"$ref": "#/components/schemas/Address"
+					}
+				},
+				{
+					"name": "Message",
+					"required": true,
+					"schema": {
+						"$ref": "#/components/schemas/Bytes"
+					}
+				}
+			],
+			"result": {
+				"name": "Signature",
+				"schema": {
+					"$ref": "#/components/schemas/Bytes"
+				}
+			}
+		},
+		{
+			"name": "eth_signTransaction",
+			"summary": "Signs a transaction that can be submitted to the network at a later time using with eth_sendRawTransaction.",
+			"params": [
+				{
+					"name": "Transaction",
+					"required": true,
+					"schema": {
+						"$ref": "#/components/schemas/SignTransaction"
+					}
+				}
+			],
+			"result": {
+				"name": "Encoded transaction",
+				"schema": {
+					"$ref": "#/components/schemas/Bytes"
+				}
+			}
+		},
+		{
+			"name": "eth_sendTransaction",
+			"summary": "Signs and submits a transaction.",
+			"params": [
+				{
+					"name": "Transaction",
+					"required": true,
+					"schema": {
+						"$ref": "#/components/schemas/TransactionWithSender"
+					}
+				}
+			],
+			"result": {
+				"name": "Transaction hash",
+				"schema": {
+					"$ref": "#/components/contentDescriptors/TransactionHash"
+				}
+			}
+		},
     {
       "name": "eth_sendRawTransaction",
       "summary": "Creates new message call transaction or a contract creation for signed transactions.",
