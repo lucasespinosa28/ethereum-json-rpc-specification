@@ -1712,50 +1712,50 @@
       ]
     },
     {
-			"name": "eth_sign",
-			"summary": "Returns an EIP-191 signature over the provided data.",
-			"params": [
-				{
-					"name": "Address",
-					"required": true,
-					"schema": {
-						"$ref": "#/components/schemas/Address"
-					}
-				},
-				{
-					"name": "Message",
-					"required": true,
-					"schema": {
-						"$ref": "#/components/schemas/Bytes"
-					}
-				}
-			],
-			"result": {
-				"name": "Signature",
-				"schema": {
-					"$ref": "#/components/schemas/Bytes"
-				}
-			}
-		},
-		{
-			"name": "eth_signTransaction",
-			"summary": "Signs a transaction that can be submitted to the network at a later time using with eth_sendRawTransaction.",
-			"params": [
-				{
-					"name": "Transaction",
-					"required": true,
-					"schema": {
-						"$ref": "#/components/schemas/SignTransaction"
-					}
-				}
-			],
-			"result": {
-				"name": "Encoded transaction",
-				"schema": {
-					"$ref": "#/components/schemas/Bytes"
-				}
-			}
-		},
+      "name": "eth_sign",
+      "summary": "Returns an EIP-191 signature over the provided data.",
+      "params": [
+        {
+        "name": "Address",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/Address"
+        }
+        },
+        {
+        "name": "Message",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/Bytes"
+        }
+        }
+      ],
+      "result": {
+        "name": "Signature",
+        "schema": {
+        "$ref": "#/components/schemas/Bytes"
+        }
+      }
+      },
+      {
+      "name": "eth_signTransaction",
+      "summary": "Returns an RLP encoded transaction signed by the specified account.",
+      "params": [
+        {
+        "name": "Transaction",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/TransactionWithSender"
+        }
+        }
+      ],
+      "result": {
+        "name": "Encoded transaction",
+        "schema": {
+        "$ref": "#/components/schemas/Bytes"
+        }
+      }
+      },    
 		{
 			"name": "eth_sendTransaction",
 			"summary": "Signs and submits a transaction.",
@@ -1771,7 +1771,7 @@
 			"result": {
 				"name": "Transaction hash",
 				"schema": {
-					"$ref": "#/components/contentDescriptors/TransactionHash"
+					"$ref": "#/components/schemas/TransactionHash"
 				}
 			}
 		},
@@ -2026,6 +2026,26 @@
         "title": "proofNode",
         "description": "An individual node used to prove a path down a merkle-patricia-tree",
         "$ref": "#/components/schemas/Bytes"
+      },
+      "TransactionWithSender": {
+        "title": "Transaction object with sender",
+        "type": "object",
+        "allOf": [
+        {
+          "required": [
+          "from"
+          ],
+          "properties": {
+          "from": {
+            "title": "from",
+            "$ref": "#/components/schemas/Address"
+          }
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Transaction"
+        }
+        ]
       },
       "StorageProofKey": {
         "title": "storageProofKey",
