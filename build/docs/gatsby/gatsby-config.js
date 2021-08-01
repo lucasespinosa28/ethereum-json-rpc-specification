@@ -1,6 +1,6 @@
 
 module.exports = {
-  pathPrefix: "",
+  pathPrefix: "/ethereum-json-rpc-specification",
   siteMetadata: {
     title: 'Ethereum JSON-RPC',
     description: 'This API lets you interact with an EVM-based client via JSON-RPC',
